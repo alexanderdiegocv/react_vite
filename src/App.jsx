@@ -1,34 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
+import { documentos as data} from './data/documentos';
+import './index.css';
+import DocumentsList from './components/Documents List/DocumentsList';
+import { FaPlusCircle, FaCheck } from 'react-icons/fa';
+import FormVerifyDocument from './components/Form Document/FormVerifyDocument';
+import FormCreateDocument from './components/Form Document/FormCreateDocument'; 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [boton, setBoton] = useState('add')
+  const [documentos, setDocumentos] = useState([])
+
+  useEffect(() => {
+    setDocumentos(data)
+  }, [])
+
+  function documentCreate(document) {
+    document.id = documentos.length + 1;
+    setDocumentos([...data, document])
+
+    const MySwal = withReactContent(Swal)
+
+    MySwal.fire({
+      title: <p>Hello World</p>,
+      didOpen: () => {
+        // `MySwal` is a subclass of `Swal` with all the same instance & static methods
+        MySwal.showLoading()
+      },
+    }).then(() => {
+      return MySwal.fire(<p>Shorthand works too</p>)
+    })    
+  }
+
+  // useEffect(() => {
+  //   const MySwal = withReactContent(Swal)
+
+  //   MySwal.fire({
+  //     title: <p>Hello World</p>,
+  //     didOpen: () => {
+  //       // `MySwal` is a subclass of `Swal` with all the same instance & static methods
+  //       MySwal.showLoading()
+  //     },
+  //   }).then(() => {
+  //     return MySwal.fire(<p>Shorthand works too</p>)
+  //   })
+  // }, [documentos])
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <>
+      <div className="title">
+            <h1>Tramite Documentario</h1> 
+            <div className="fa" onClick={ 
+                () => {
+                    boton === 'add' ? setBoton('check') : setBoton('add')
+                }
+            }>
+                {
+                    boton === 'add' ? <FaPlusCircle /> : <FaCheck />
+                }
+            </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+      {
+          boton === 'add' ? <FormVerifyDocument /> : <FormCreateDocument documentCreate={documentCreate}/>
+      }
+      {
+        documentos.length === 0 ? <p>No hay documentos aún</p> : <DocumentsList documentos={documentos}/>
+      }
+    </>
   )
 }
 

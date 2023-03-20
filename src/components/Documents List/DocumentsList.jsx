@@ -6,7 +6,7 @@ function DocumentsList({documentos}) {
       <h2 className='card_list_title'>Documentos</h2>
       <ul className='card_list_list'>
         {
-            documentos.map(documento => (
+            documentos.reverse().map(documento => (
                 <DocumentItem key={documento.id} documento={documento}/>
             ))
         }
