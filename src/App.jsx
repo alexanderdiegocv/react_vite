@@ -17,15 +17,34 @@ function App() {
     setDocumentos(data)
   }, [])
 
-  function documentCreate(document) {
+  function documentCreate(document, form) {
     document.id = documentos.length + 1;
     setDocumentos([...data, document])
 
+    form.reset();
+    
     const MySwal = withReactContent(Swal)
-
+    
     MySwal.fire({
-      title: <p>Documento Guardado</p>
+      title: <p>Documento Guardado</p>,
     })               
+  }
+
+  function documentDelete(id) {
+    const newDocumentos = documentos.filter(documento => documento.id !== id)
+    setDocumentos(newDocumentos)
+  }
+
+  function documentEdit(CVD) {
+    const newDocumentos = documentos.map(item => item.id === document.id ? document : item)
+    setDocumentos(newDocumentos)
+  }
+
+  function documentVerify(CVD) {
+    const newDocumentos = documentos.filter(documento => documento.CVD.trim().replace(/\s/g, "") === CVD)
+
+    setDocumentos(newDocumentos)    
+    return newDocumentos.length === 0 ? false : true;
   }
 
   return (
@@ -43,7 +62,7 @@ function App() {
             </div>
       </div>
       {
-          boton === 'add' ? <FormVerifyDocument /> : <FormCreateDocument documentCreate={documentCreate}/>
+          boton === 'add' ? <FormVerifyDocument documentVerify={documentVerify}/> : <FormCreateDocument documentCreate={documentCreate}/>
       }
       {
         documentos.length === 0 ? <p>No hay documentos aún</p> : <DocumentsList documentos={documentos}/>

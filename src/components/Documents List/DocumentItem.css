@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+.card_cvd {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 #218e8949;
+    border: 2px solid #218e88;
+    padding: 1rem 0;
+    width: 30rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+}
+
+.card_cvd_data {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin-left: 1rem;
+}
+
+.card_cvd_data .card_cvd_data_leyenda {
+    font-family: 'Courier Prime', monospace;
+    text-align: justify;
+    font-size: 8px;
+    margin-bottom: 1rem;
+}
+
+.card_cvd_data .card_cvd_data_url {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.card_cvd_data .card_cvd_data_cvd {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.card_cvd_qr {
+    flex: 0 0 100px;
+}
