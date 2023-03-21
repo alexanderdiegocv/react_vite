@@ -24,29 +24,9 @@ function App() {
     const MySwal = withReactContent(Swal)
 
     MySwal.fire({
-      title: <p>Hello World</p>,
-      didOpen: () => {
-        // `MySwal` is a subclass of `Swal` with all the same instance & static methods
-        MySwal.showLoading()
-      },
-    }).then(() => {
-      return MySwal.fire(<p>Shorthand works too</p>)
-    })    
+      title: <p>Documento Guardado</p>
+    })               
   }
-
-  // useEffect(() => {
-  //   const MySwal = withReactContent(Swal)
-
-  //   MySwal.fire({
-  //     title: <p>Hello World</p>,
-  //     didOpen: () => {
-  //       // `MySwal` is a subclass of `Swal` with all the same instance & static methods
-  //       MySwal.showLoading()
-  //     },
-  //   }).then(() => {
-  //     return MySwal.fire(<p>Shorthand works too</p>)
-  //   })
-  // }, [documentos])
 
   return (
     <>
