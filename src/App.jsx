@@ -19,7 +19,7 @@ function App() {
 
   function documentCreate(document, form) {
     document.id = documentos.length + 1;
-    setDocumentos([...data, document])
+    setDocumentos([...documentos, document])
 
     form.reset();
     
