@@ -21,21 +21,10 @@ function FormCreateDocument({documentCreate}) {
         const sufijo = Math.floor((Math.random() * 90)+10).toString();
 
         const entrada = version+mountMiliseconds+sufijo;
-        // const entrada = '207004540330936'
-        // const entrada = '207005108669410'
 
         const digitoCheckeo = luhnAlgorithm(entrada.replace(/\s/g, "")).toString();
 
         const CVD = entrada + digitoCheckeo;
-
-        console.log({
-          version,
-          mountMiliseconds,
-          sufijo,
-          entrada,
-          digitoCheckeo,
-          CVD
-        })
 
         const documento = {
             title,

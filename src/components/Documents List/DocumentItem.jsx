@@ -2,6 +2,11 @@ import QRCode from "react-qr-code";
 import './DocumentItem.css';
 
 function DocumentItem({documento}) {
+
+  const eliminar = () => {
+    console.log("Eliminar");
+  }
+
   return (
     <li className='card_list_item'>
           <div className='card_list_item_container'>
@@ -38,9 +43,9 @@ function DocumentItem({documento}) {
                 </div>
               </div>
             </div>
-            {/* <div className='card_list_item_container_actions'>
+            <div className='card_list_item_container_actions' onClick={eliminar}>
               <button className='card_list_item_container_actions_button'>Eliminar</button>
-            </div> */}
+            </div>
           </div>
     </li>
   );
