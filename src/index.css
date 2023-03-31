@@ -65,7 +65,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 1.5em;
+  /* padding: 0 1.5em; */
   text-align: center;
   background-color: #f0f0f0;
   color: #1a1a1a;
@@ -93,6 +93,80 @@ main .fa {
 
 main .fa:hover {
   color: #1a1a1a;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0;
+  padding: .5rem 0;
+  width: 100%;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+}
+
+nav .logo {
+  flex: 1 1 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  text-align: center;
+}
+
+nav .logo h1 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.1;
+  color: #218e88;
+  border: 2px solid #218e88;
+  padding: .5rem 1rem;
+  border-radius: 1rem;
+}
+
+/*Hazme un diseño más elaborado con los pseudoelementos before y after*/
+
+/* nav .logo h1::after {
+  content: "";
+  margin-left: 0.5rem;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+}
+
+nav .logo h1::before {
+  content: "🌱";
+  margin-right: 0.5rem;
+} */
+
+nav .menu {
+  flex: 1 1 70%;
+}
+
+nav .menu ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav .menu ul li {
+  margin: 0;
+  padding: 0;
+}
+
+nav .menu ul li a {
+  display: block;
+  padding: 1rem;
+  color: #1a1a1a;
+  text-decoration: none;
 }
 
 @media (prefers-color-scheme: light) {
